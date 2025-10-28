@@ -138,6 +138,10 @@
           }
         }
       }
+      img {
+        max-width: 60%;
+        height: auto;
+      }
     </style>
   </head>
 
@@ -152,22 +156,39 @@
     </header>
 
     <main>
-      <h2>Proposition: [STATE PROPOSITION]</h2>
+      <h2>Proposition: The Bronx and East Brooklyn receive more substantiated complaints than other New York City precincts.</h2>
 
       <section>
         <h3>FOR the Proposition</h3>
 
         <figure>
-          <img src="IMAGE_FILENAME" alt="" />
+          <img src="images/dsc106project2Counts.png" alt=""/>
           <figcaption>BRIEF CAPTION HERE.</figcaption>
         </figure>
 
         <p>Design Decisions and Rationale:</p>
 
         <ul>
-          <li>RATIONALE_1</li>
-          <li>RATIONALE_2</li>
-          <li>RATIONALE_3</li>
+          <li>Using heat map to visualize the differences between precincts (2)</li>
+            <ul>
+              <li>We considered using a histogram but there were too many precincts so the data would not be easy to visualize without being messy. We settled on the heatmap because it concisely showed the magnitude of data and nicely visualized the location and vicinity of precincts in New York City.</li>
+            </ul>
+          <li>Filtering data to only show complaints that were substantiated (2)</li>
+            <ul>
+              <li>We chose to include only substantiated complaints to focus on the complaints where the officer was found to have actually committed the misconduct after investigation. Alternatively, we would have a visualization of all complaints, substantiated or not, which would show a wrong trend of misconduct by officers in areas where the allegations were found to be false.</li>
+            </ul>
+          <li>Binning complaints into 5 different ranges (2)</li>
+            <ul>
+              <li>We binned the counts into five different bins, each incrementing by 50 substantiated complaints (0-50, 50-100, 100-150, 150-200, 200+). Using equal width bins helps readers with scale across the whole city, while not needing to worry about the minor differences between precincts.</li>
+            </ul>
+          <li>Using a discretized sequential color scale (1)</li>
+            <ul>
+              <li>By using a discrete sequential color scale, we were able to indicate the magnitude of the number of substantiated complaints while improving on the readability of a continuous sequential scale. We chose this color specifically because we liked how the darkness of the colors highlighted high magnitude areas.</li>
+            </ul>
+          <li>Outlining our areas of interest and an accompanying annotation (-1)</li>
+            <ul>
+              <li>We want to highlight the certain areas of New York that a viewer should specifically take note of. This works in tandem with the colors of the map to support our proposition in the title.</li>
+            </ul>
         </ul>
       </section>
 
@@ -175,23 +196,43 @@
         <h3>AGAINST the Proposition</h3>
 
         <figure>
-          <img src="IMAGE_FILENAME" alt="" />
+          <img src="images/dsc106project2Ratio.png" alt="" height="700px"/>
           <figcaption>BRIEF CAPTION HERE.</figcaption>
         </figure>
 
         <p>Design Decisions and Rationale:</p>
 
         <ul>
-          <li>RATIONALE_1</li>
-          <li>RATIONALE_2</li>
-          <li>RATIONALE_3</li>
+          <li>Using heat map to visualize the differences between precincts (2)</li>
+            <ul>
+              <li>We considered using a histogram but there were too many precincts so the data would not be easy to visualize without being messy. We settled on the color map because it concisely showed the magnitude of data and nicely visualized the location of precincts in New York City.</li>
+            </ul>
+          <li>Using the percentage of substantiated complaints per precinct (-2)</li>
+            <ul>
+              <li>We wanted to manipulate the values we were showing so we could see significant differences between our two maps. So we tried viewing the counts as percentages of complaints that are substantiated per precinct. This significantly changed how our map looked as it shifted the high magnitude areas to different spots. We saw it show an opposing side of our proposition and went with it.</li>
+            </ul>
+          <li>Binned the first 20% followed by 10% increments and finishing out with 50%+ (-1)</li>
+            <ul>
+              <li>We considered using an increment of 15%, but this was less intuitive to the viewer of both graphs. We settled on using the first 20%, followed by 10% increments, because we discovered that there were not a lot of precincts with less than 20% of substantiated complaints.</li>
+            </ul>
+          <li>Outlining our areas of interest and an accompanying annotation (-1)</li>
+            <ul>
+              <li>We want to outline the areas we mention in our proposition to show the contrast between what the proposition says and what the “reality” of the map shows us. The noticeable change between the for and against maps are highlighted through this design particularly because seeing the differences in color within the outlined regions shows the opposing side of the proposition we want the viewer to see. We considered highlighting different areas that had higher magnitude than they did in the other map, but thought that would shift focus away from the proposition.</li>
+            </ul>
         </ul>
       </section>
 
       <section>
         <h2>Final Reflection</h2>
 
-        <p>[WRITE FINAL REFLECTION PARAGRAPHS HERE.]</p>
+        <p>We began the project by examining the number of complaints per precinct across New York City; however, we found no significant differences between different precincts. Next, we shifted our focus to just the substantiated complaints per precinct and noticed that precincts in the Bronx and East Brooklyn had the highest number of substantiated civilian complaints compared to other parts of the city.  However, when we analyzed the percentage of complaints that were substantiated by precinct, the trend appears to be misleading because the Bronx and East Brooklyn had similar substantiation rates to other precincts, and West Brooklyn seems to have the highest rate instead.
+          <br>
+          <br>
+          To better represent and visualize the distribution of complaints, we used a heat map to better illustrate both the magnitude of complaints and the boundaries between precincts. We emphasized the Bronx and East Brooklyn by outlining with a darker boundary to draw the viewer’s attention to the two key points of interest. Annotations were added to explain the significance. Initially, we included all precinct numbers on the map, but this made the visualization overcluttered with the large number of precincts in New York City. To improve readability, we did not include the precinct number on the map and chose a yellow-orange-red discretized sequential color scale to keep the magnitude of the variable.
+          <br>
+          <br>
+          One of the more difficult portions of this project was discovering variables and trends that could be misrepresented depending on the aggregation method used. Another difficulty was creating the heatmap that we used for our visualization. To do this, we had to find the coordinates of the precinct borders online and import them into Python using geopandas to create the visualization. Cleaning the data to sort by precinct also had its issues, as many of the data points were not precinct-based, like specialized units or detectives, or weren’t numbered cleanly, like how the precinct that contained Central Park and Midtown were under names and not numbers in the data, all of which we had to account for when creating the visualization. One surprising aspect of this project was discovering how easy it was in creating a visualization that completely object our proposition. This experience made us consider that ethical analysis and visualization is about creating a visualization that fully inform the viewers on the limitations of the data and the transformations made to the data and the visualization. We believe that the boundary between acceptable and misleading persuasive choices may be drawn at whether the annotations clearly communicate how the data were processed, transformed, and represented.
+        </p>
       </section>
     </main>
   </body>
